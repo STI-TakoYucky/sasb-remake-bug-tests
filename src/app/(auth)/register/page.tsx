@@ -34,7 +34,7 @@ export default function Register() {
     const password = passwordRef.current?.value;
 
         try {
-          const res = await fetch("https://sasb-remake-bug-tests.vercel.app/api/register", {
+          const res = await fetch("https://sasb-remake-bug-tests.onrender.com/api/register", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default function Register() {
           setError(false);
           setStatusMessage(message);
 
-            router.push("https://sasb-remake-bug-tests.vercel.app/log-in");
+            router.push("https://sasb-remake-bug-tests.onrender.com/log-in");
 
          
           } else if (!res.ok) {
