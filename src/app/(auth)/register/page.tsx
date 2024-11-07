@@ -55,7 +55,7 @@ export default function Register() {
           setStatusMessage(message);
 
           setTimeout(() => {
-            router.push("/log-in");
+            router.push("https://sasb-remake-bug-tests.vercel.app/log-in");
           }, 3000)
 
          
