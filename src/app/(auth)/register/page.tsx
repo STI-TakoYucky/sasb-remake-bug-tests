@@ -33,40 +33,38 @@ export default function Register() {
     const lastName = lastNameRef.current?.value;
     const password = passwordRef.current?.value;
 
-        try {
-          const res = await fetch("https://sasb-remake-bug-tests.onrender.com/api/register", {
-            method: "POST",
-            headers: {
+    try {
+      const res = await fetch("https://sasb-remake-bug-tests.onrender.com/api/register", {
+          method: "POST",
+          headers: {
               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
+          },
+          body: JSON.stringify({
               firstName,
               lastName,
               email,
               password,
-            }),
-          });
-
-          const { message } = await res.json();
-          
-          if (res.ok) {
+          }),
+      });
+  
+      const responseData = await res.json(); // Get the JSON response
+  
+      if (res.ok) {
           setSuccess(true);
           setError(false);
-          setStatusMessage(message);
-
-            router.push("https://sasb-remake-bug-tests.onrender.com/log-in");
-
-         
-          } else if (!res.ok) {
-            setError(true);
-            setStatusMessage(message);
-          }
-        } catch (err) {
-          console.error(err)
-          
-        }
-        console.timeEnd("CHECK CREDENTIALS");
-  };
+          setStatusMessage(responseData.message);
+          router.push("https://sasb-remake-bug-tests.onrender.com/log-in");
+      } else {
+          setError(true);
+          setStatusMessage(responseData.message || "An error occurred.");
+      }
+  } catch (err) {
+      console.error("Error during fetch:", err);
+      setError(true);
+      setStatusMessage("Network or server error occurred.");
+  }
+  console.timeEnd("CHECK CREDENTIALS");
+}
 
   return (
     <div>
