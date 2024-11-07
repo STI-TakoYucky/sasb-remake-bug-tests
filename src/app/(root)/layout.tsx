@@ -1,7 +1,4 @@
 import "@/styles/globals.css";
-import Navbar from "../../components/Navbar"
-import Preloader from '../../components/Preloader'
-import Footer from '@/components/Footer'
 import ProtectedRoutes from "@/components/ProtectedRoutes";
 
 export const metadata = {
@@ -19,10 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ProtectedRoutes>
-          <Preloader></Preloader> 
-          <Navbar></Navbar>
           {children}
-          <Footer></Footer>
         </ProtectedRoutes>
       </body>
     </html>
