@@ -94,7 +94,7 @@ export const POST = async (request: any, response: any) => {
         // End API timing upon error
         console.timeEnd("START API");
 
-        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ message: error }, { status: 500 });
     }
 };
 
