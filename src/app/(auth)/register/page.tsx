@@ -54,17 +54,16 @@ export default function Register() {
           setError(false);
           setStatusMessage(message);
 
-          setTimeout(() => {
             router.push("https://sasb-remake-bug-tests.vercel.app/log-in");
-          }, 3000)
 
          
-          } else if (res.status === 500) {
+          } else if (!res.ok) {
             setError(true);
             setStatusMessage(message);
           }
         } catch (err) {
           console.error(err)
+          
         }
         console.timeEnd("CHECK CREDENTIALS");
   };
