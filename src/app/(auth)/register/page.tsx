@@ -33,14 +33,6 @@ export default function Register() {
     const lastName = lastNameRef.current?.value;
     const password = passwordRef.current?.value;
 
-    if (!email || !firstName || !lastName || !password) {
-      setStatusMessage("Please fill out all the required fields.");
-      setError(true);
-    } 
-    else if(password.length < 7){
-      setStatusMessage("Password must be 8 letters or more.");
-      setError(true);
-    } else {
         try {
           const res = await fetch("https://sasb-remake-bug-tests.vercel.app/api/register", {
             method: "POST",
@@ -57,8 +49,7 @@ export default function Register() {
 
           const { message } = await res.json();
           
-
-          if (res.status === 201) {
+          if (res.ok) {
           setSuccess(true);
           setError(false);
           setStatusMessage(message);
@@ -76,7 +67,6 @@ export default function Register() {
           console.error(err)
         }
         console.timeEnd("CHECK CREDENTIALS");
-    }
   };
 
   return (
